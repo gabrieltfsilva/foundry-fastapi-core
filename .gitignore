@@ -218,3 +218,8 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+
+
+# AI Agent context and local instructions
+AGENTS.md
+CLAUDE.md
