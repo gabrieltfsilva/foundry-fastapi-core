@@ -3,11 +3,11 @@ from pydantic_settings import BaseSettings, SettingsConfigDict
 
 
 class Settings(BaseSettings):
-    """Configurações globais da aplicação gerenciadas via Pydantic Settings."""
+    """Global application settings managed via Pydantic Settings."""
 
     PROJECT_NAME: str = "Foundry FastAPI Core"
     DESCRIPTION: str = (
-        "Microsserviço backend escalável pronto para integrações Cloud-Native e Azure AI Foundry."
+        "Scalable backend microservice ready for Cloud-Native and Azure AI Foundry integrations."
     )
     VERSION: str = "0.1.0"
     ENVIRONMENT: str = "development"
@@ -23,7 +23,7 @@ class Settings(BaseSettings):
 
 @lru_cache
 def get_settings() -> Settings:
-    """Retorna uma instância em cache das configurações da aplicação."""
+    """Return a cached singleton instance of application settings."""
     return Settings()
 
 

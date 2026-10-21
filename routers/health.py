@@ -9,11 +9,11 @@ router = APIRouter(tags=["Health"])
     "/health",
     response_model=HealthResponse,
     status_code=status.HTTP_200_OK,
-    summary="Health Check da Aplicação",
-    description="Retorna o status operacional, versão e ambiente atual do microsserviço.",
+    summary="Application Health Check",
+    description="Returns the operational status, version, and current environment of the microservice.",
 )
 async def health_check() -> HealthResponse:
-    """Endpoint assíncrono para verificação de integridade do serviço."""
+    """Asynchronous endpoint for service health verification."""
     return HealthResponse(
         status="healthy",
         project_name=settings.PROJECT_NAME,

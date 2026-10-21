@@ -6,7 +6,7 @@ client = TestClient(app)
 
 
 def test_health_check_returns_200_and_expected_payload():
-    """Deve retornar HTTP 200 e o payload de saúde esperado conforme HealthResponse."""
+    """Should return HTTP 200 and the expected health payload matching HealthResponse."""
     response = client.get(f"{settings.API_V1_STR}/health")
 
     assert response.status_code == 200
@@ -18,7 +18,7 @@ def test_health_check_returns_200_and_expected_payload():
 
 
 def test_root_redirects_to_docs():
-    """Deve redirecionar a rota raiz (/) para a documentação Swagger (/docs)."""
+    """Should redirect the root route (/) to the Swagger documentation (/docs)."""
     response = client.get("/", follow_redirects=False)
 
     assert response.status_code in (307, 302)

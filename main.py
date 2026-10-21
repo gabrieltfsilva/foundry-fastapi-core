@@ -9,12 +9,12 @@ from routers import health
 @asynccontextmanager
 async def lifespan(app: FastAPI):
     """
-    Gerencia o ciclo de vida da aplicação (Startup e Shutdown).
-    Futuramente inicializará e fechará clientes persistentes do Azure AI Foundry.
+    Manage application lifecycle (Startup and Shutdown).
+    Will initialize and close persistent Azure AI Foundry clients in future steps.
     """
-    # Startup: inicializar conexões/clientes (ex: AIProjectClient, DefaultAzureCredential)
+    # Startup: initialize connections/clients (e.g., AIProjectClient, DefaultAzureCredential)
     yield
-    # Shutdown: liberar recursos e conexões HTTP graciosamente
+    # Shutdown: gracefully release resources and HTTP connections
 
 
 app = FastAPI(
@@ -27,11 +27,11 @@ app = FastAPI(
     lifespan=lifespan,
 )
 
-# Registro de Routers sob o prefixo /api/v1
+# Register routers under the /api/v1 prefix
 app.include_router(health.router, prefix=settings.API_V1_STR)
 
 
 @app.get("/", include_in_schema=False)
 async def root() -> RedirectResponse:
-    """Redireciona a rota raiz para a documentação interativa (Swagger UI)."""
+    """Redirect the root route to the interactive API documentation (Swagger UI)."""
     return RedirectResponse(url="/docs")
